@@ -1,0 +1,24 @@
+﻿<h3>Minhas composições</h3> <a href="#!novacomposicao"><button class="btn">Nova</button></a>
+<hr>
+<div ng-show="!jaCarregou" class="centro">
+<img src="img/loading.gif">
+</div>
+<div class="col-sm-3" ng-repeat="composicao in composicoes">
+	<div class="card"  style="border-style: solid;padding:0px;">
+		<img src="img/composicaoetiqueta.jpg" style="width:100%"/>
+		<div style="background:black;color:white;width:100%">
+	Nome:	{{composicao.nome}}<br>
+		</div>
+	Estilo: {{composicao.estilo}}<br>
+	<div style="background:black;color:white;width:100%;padding: 3px;">
+		<span class="pointer glyphicon glyphicon-play"/>
+		<span class="pointer glyphicon glyphicon-pause"/>
+		<span class="pointer glyphicon glyphicon-stop"/>
+		<div class="pull-right">
+{{composicao.id}}
+		<a href="/composicao"></a><span class="pointer glyphicon glyphicon-edit" ng-click="obterComposicao(composicao.id)"/>
+		<span class="pointer glyphicon glyphicon-remove"/>		
+		</div>
+		</div>
+	</div>
+</div>

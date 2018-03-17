@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="js/CadastroCtrl.js"></script>
+<title>Home Band - Cadastro</title>
+</head>
+<body>
+
+	<div class="container" ng-app="cadastroApp"	ng-controller="cadastroCtrl">
+		<div align="center" style="margin: 60px">
+			<img src="img/logotipo.png" style="width: 200px;" />
+		</div>
+		<h3 align="center">Cadastro</h3>
+		<div align="center">
+			<div ng-if="contatoForm.email.$error.pattern" class="alert alert-danger">
+				Por favor digite um e-mail válido!
+			</div>
+			<div ng-if="contatoForm.senha1.$error.minlength || contatoForm.senha2.$error.minlength" class="alert alert-danger">
+				A senha deve conter pelo menos 6 caracteres
+			</div>
+			<p align="center" style="color: red;" th:text="${session.mensagem}"	name="aviso"></p>
+		</div>
+		<form class="form-horizontal" action="cadastrar" method="post" name="contatoForm">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="email">Email:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="email" placeholder="Entre com o email" name="email" ng-model="email"
+						ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="noe">Nome no perfil:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="nome" placeholder="Entre com o nome para exibir no perfil" name="nome"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="senha1">Senha:</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="senha1" placeholder="Entre com a senha" name="senha1" ng-model="senha1"
+						ng-required="true" ng-minlength="6" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="senha2">Confirme	sua senha:</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="senha2"	placeholder="Confirme a senha" name="senha2" ng-model="senha2" ng-required="true" ng-minlength="6" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button class="btn btn-default" type="submit" ng-disabled="contatoForm.$invalid">Cadastrar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<p>senhasDiferentes: {{senhasDiferentes}}</p>
+	<h3 align="center">
+		<a href="login">Volta para o login</a>
+	</h3>
+
+</body>
+</html>

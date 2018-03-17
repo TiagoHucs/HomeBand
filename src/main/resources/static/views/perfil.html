@@ -1,0 +1,59 @@
+﻿<meta charset="utf-8" />
+<script>
+
+</script>
+<h3>
+<div ng-show="isEditando"><input class="form-control" type="text" ng-model="novoPerfil.nome"/></div>
+<div ng-show="!isEditando">{{perfil.nome}}</div>
+</h3>
+
+<button ng-if="!isEditando" class="btn" ng-click="habilitarEdicao()">Editar perfil</button>
+<button ng-if="!isEditando" class="btn" data-toggle="modal" data-target="#modalAlteraSenha">Alterar senha</button>
+<button ng-if="isEditando" class="btn btn-danger" ng-click="descartarEdicao()">Descartar alterações</button>
+<button ng-if="isEditando" class="btn btn-success" ng-click="salvarEdicao()">Salvar perfil</button>
+<hr>
+<div class="row">
+	<div class="col-sm-3">
+		<div ng-show="isEditando">
+			<img alt="foto" id="fotoPerfil" src="{{perfil.foto}}" style="width:150px"/>
+			<input class="fileinput-filename" type="file" id="file" onchange="javascript:visualizarImg();"/>
+		</div>
+		<div ng-show="!isEditando">	
+			<img alt="Carregando..." src="{{perfil.foto}}" style="width:150px"/>
+		</div>
+	</div>
+	<div class="col-sm-9">
+		<div ng-show="isEditando">
+			<p><b>E-mail:</b> <input class="form-control" type="text" placeholder="{{perfil.email}}" ng-model="novoPerfil.email"/></p>
+			<p><b>Telefone:</b> <input class="form-control" type="text" placeholder="{{perfil.telefone}}" ng-model="novoPerfil.telefone"/></p>
+			<p><b>Localidade:</b> <input class="form-control" type="text" placeholder="{{perfil.localidade}}" ng-model="novoPerfil.localidade"/></p>
+			<p><b>Instrumento:</b> <input class="form-control" type="text" placeholder="{{perfil.instrumento}}" ng-model="novoPerfil.instrumento"/></p>
+		</div>
+		<div ng-show="!isEditando">
+			<p><b>E-mail:</b> {{perfil.email}}</p>
+			<p><b>Telefone:</b> {{perfil.telefone}}</p>
+			<p><b>Localidade:</b> {{perfil.localidade}}</p>
+			<p><b>Instrumento:</b> {{perfil.instrumento}}</p>
+		</div>
+	</div>
+</div>
+
+ <!-- Modal senha -->
+  <div class="modal fade" id="modalAlteraSenha" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <div class="modal-body">
+			<p><b>Senha anterior:</b> <input class="form-control" type="password" placeholder="Digite a sua senha anterior" ng-model="senhaAnterior"/></p>
+			<p><b>Nova senha:</b> <input class="form-control" type="password" placeholder="Digite a sua nova senha" ng-model="novaSenha1"/></p>
+			<p><b>Nova senha:</b> <input class="form-control" type="password" placeholder="Confirme a sua senha" ng-model="novaSenha2"/></p>
+			<button class="btn btn-success" data-dismiss="modal">Salvar perfil</button>
+			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+		</div>
+
+      </div>
+      
+    </div>
+  </div>

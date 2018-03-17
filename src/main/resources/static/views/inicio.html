@@ -1,0 +1,17 @@
+﻿<h2>Ultimas atualizações</h2>
+<hr>
+<div ng-show="!jaCarregou" class="centro">
+<img src="img/loading.gif">
+</div>
+<div ng-repeat="evento in eventos">
+	<div class="col-sm-1">
+		<img width="50px" alt="Carregando..." src="{{evento.perfil.foto}}">
+	</div>
+	<div class="col-sm-11">
+		<p><i>{{evento.data | date}}</i></p>
+		<p>{{evento.acao}}</p>
+	</div>
+	<div class="col-sm-12">
+		<hr>
+	</div>
+</div>

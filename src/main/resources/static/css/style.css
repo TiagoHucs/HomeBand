@@ -1,0 +1,16 @@
+.pointer {
+cursor: pointer;
+}
+
+.card {
+box-shadow: 10px 10px 5px grey;
+margin-bottom:20px;
+}
+
+.navbar {
+margin-bottom:2px;
+}
+
+.centro {
+text-align: center;
+}

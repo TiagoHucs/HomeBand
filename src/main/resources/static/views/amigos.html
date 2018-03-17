@@ -1,0 +1,21 @@
+<h3>Meus amigos</h3>
+<hr>
+<div ng-show="!jaCarregou" class="centro">
+<img src="img/loading.gif">
+</div>
+<!-- Team Members Row -->
+      <div class="row">
+        <div class="col-lg-12">
+
+        </div>
+        <div class="col-lg-4 col-sm-6 text-center mb-4" ng-repeat="perfil in perfis">
+          <img class="rounded-circle img-fluid d-block mx-auto" alt="" src="{{perfil.foto}}" width="200px">
+          <h3>{{perfil.nome}}</h3>
+            <h4>{{perfil.localidade}}</h4>
+          
+          <h5>{{perfil.instrumento}}<h5>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.container -->

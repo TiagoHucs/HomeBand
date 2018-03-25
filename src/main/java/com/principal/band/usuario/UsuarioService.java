@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.principal.band.rest.RespostaRest;
+
 @Service
 public class UsuarioService {
 	
@@ -51,14 +53,14 @@ public class UsuarioService {
 		return usuario;
 	}
 
-	public void trocarSenha(String senhaAnterior, String novaSenha) {
+	public RespostaRest trocarSenha(String senhaAnterior, String novaSenha) {
 		Usuario usuario = this.getUserLogado();
 		usuario = repository.getOne(usuario.getId());
 		if(usuario.getSenha().equals(senhaAnterior)){
 			usuario.setSenha(novaSenha);
-			session.setAttribute("mensagem", "Senha alterada com sucesso.");
-		}else{
-			session.setAttribute("mensagem", "A senha anterior não confere.");
+			return new RespostaRest(0,"Senha alterada com sucesso!"); 
+			}else{
+			return new RespostaRest(1,"Senha atual incorreta!");
 		}
 		
 	}

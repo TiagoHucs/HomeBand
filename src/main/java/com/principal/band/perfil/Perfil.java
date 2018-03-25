@@ -22,14 +22,10 @@ public class Perfil {
 	private Long id;
 	@Column
 	private String nome;
-	@Column
-	private String email;
 	@Lob
 	private String foto;
 	@Column
 	private String Instrumento;
-	@Column
-	private String telefone;
 	@Column
 	private String localidade;
 

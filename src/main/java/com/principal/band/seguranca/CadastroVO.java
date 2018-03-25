@@ -8,6 +8,7 @@ import lombok.Setter;
 public class CadastroVO {
 	
 	private String email;
+	private String senha;
 	private String senha1;
 	private String senha2;
 	private String nome;

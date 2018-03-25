@@ -61,11 +61,9 @@ public class SecurityController {
 			Usuario novoUsuario = new Usuario();
 			Perfil novoPerfil = new Perfil();
 			novoPerfil.setNome(cadastroForm.getNome());
-			novoPerfil.setEmail(cadastroForm.getEmail());
 			novoPerfil.setLocalidade(cadastroForm.getLocalidade());
 			novoPerfil.setFoto("img/img_avatar1.png");
 			novoPerfil.setInstrumento(cadastroForm.getInstrumento());
-			novoPerfil.setTelefone(cadastroForm.getTelefone());
 			perfilService.salvar(novoPerfil);
 			
 			novoUsuario.setEmail(cadastroForm.getEmail());

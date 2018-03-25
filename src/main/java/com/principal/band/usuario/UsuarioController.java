@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.principal.band.rest.RespostaRest;
+import com.principal.band.seguranca.CadastroVO;
 
 @RestController
 public class UsuarioController {
@@ -20,14 +21,29 @@ public class UsuarioController {
 		return userService.getUserLogado();
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/trocarSenha")
-	public RespostaRest trocarSenha(@RequestBody String senhaAntiga, String senhaNova1,String senhaNova2) {
-		try {
-			System.out.println("recebi para trocar: "+senhaAntiga);
-			return new RespostaRest(0,"perfil alterado com sucesso!");
-		} catch (Exception e) {
-			return new RespostaRest(1,"erro ao alterar perfil. "+e);
+	private boolean validaFormTrocaSenha(String s1, String s2, String s3){
+		if(s1==null || s2==null || s3==null){
+			return false;
+		}else if(!s2.equalsIgnoreCase(s3)){
+			return false;
+		}else if(s2.length()<6){
+			return false;
+		}else{
+			return true;
 		}
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/trocarSenha")
+	public RespostaRest trocarSenha(@RequestBody CadastroVO form) {
+		
+		boolean formularioIsValido = validaFormTrocaSenha(form.getSenha(),form.getSenha1(), form.getSenha2());
+		
+		if(formularioIsValido){
+			return userService.trocarSenha(form.getSenha(), form.getSenha1());
+		}else{
+			return new RespostaRest(1,"Formulario incorreto ou não respeita as regras de senha");			
+		}
+
 	}
 
 	

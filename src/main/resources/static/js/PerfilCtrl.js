@@ -40,7 +40,7 @@ app.controller('perfilCtrl', function($scope, $http, $route) {
 		$http({
 			method : "POST",
 			url : '/trocarSenha',
-			data : {senhaAnterior:$scope.senhaAnterior,novaSenha1:$scope.novaSenha1,novaSenha2:$scope.novaSenha2}
+			data : {senha:$scope.senhaAnterior,senha1:$scope.novaSenha1,senha2:$scope.novaSenha2}
 		}).then(function mySuccess(response) {
 			$scope.msg = response.data;
 			console.log($scope.msg)

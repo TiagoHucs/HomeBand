@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="css/style.css"></link>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -16,8 +17,7 @@
 <script src="js/CadastroCtrl.js"></script>
 <title>Home Band - Cadastro</title>
 </head>
-<body>
-
+<body class="formlog">
 	<div class="container" ng-app="cadastroApp"	ng-controller="cadastroCtrl">
 		<div align="center" style="margin: 60px">
 			<img src="img/logotipo.png" style="width: 200px;" />
@@ -66,7 +66,6 @@
 			</div>
 		</form>
 	</div>
-	<p>senhasDiferentes: {{senhasDiferentes}}</p>
 	<h3 align="center">
 		<a href="login">Volta para o login</a>
 	</h3>

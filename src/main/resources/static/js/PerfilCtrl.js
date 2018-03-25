@@ -2,6 +2,7 @@ app.controller('perfilCtrl', function($scope, $http, $route) {
 	
 	$scope.novoPerfil;
 	$scope.isEditando = false;
+	$scope.msg;
 
 	$http.get("/getloggedperfil").then(function(response) {
 		$scope.perfil = response.data;
@@ -41,7 +42,11 @@ app.controller('perfilCtrl', function($scope, $http, $route) {
 			url : '/trocarSenha',
 			data : {senhaAnterior:$scope.senhaAnterior,novaSenha1:$scope.novaSenha1,novaSenha2:$scope.novaSenha2}
 		}).then(function mySuccess(response) {
-			$route.reload();
+			$scope.msg = response.data;
+			console.log($scope.msg)
+			$('#modal').modal('hide'); 
+			$('body').removeClass('modal-open'); 
+ 			$('.modal-backdrop').remove();
 		}, function myError(response) {
 			console.log('erro ao trocar senha')
 		});

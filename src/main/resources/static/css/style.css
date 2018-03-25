@@ -14,3 +14,13 @@ margin-bottom:2px;
 .centro {
 text-align: center;
 }
+
+.formlog{
+background-color:#ff9933;
+color:white;
+}
+
+a {
+    color:white;
+    text-decoration: none;
+}

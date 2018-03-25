@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.principal.band.rest.RespostaRest;
 import com.principal.band.usuario.Usuario;
 import com.principal.band.usuario.UsuarioService;
 
@@ -33,12 +34,14 @@ public class PerfilController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/atualizaPerfilUsuario")
-	public void atualizaPerfilUsuario(@RequestBody Perfil perfil) {
-		System.out.println("recebi: "+perfil.getId()+" - "+perfil.getNome());
-		Usuario usuario = userService.getUserLogado();
-		perfil.setId(usuario.getId());
-	
-		perfilService.atualizaPerfilUsuario(perfil);
+	public RespostaRest atualizaPerfilUsuario(@RequestBody Perfil perfilNovo) {
+		try {
+			perfilNovo.setId(userService.getUserLogado().getPerfil().getId());
+			perfilService.atualizaPerfilUsuario(perfilNovo);
+			return new RespostaRest(0,"perfil alterado com sucesso!");
+		} catch (Exception e) {
+			return new RespostaRest(1,"erro ao alterar perfil. "+e);
+		}
 	}
 
 }

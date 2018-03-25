@@ -6,7 +6,14 @@
 <div ng-show="isEditando"><input class="form-control" type="text" ng-model="novoPerfil.nome"/></div>
 <div ng-show="!isEditando">{{perfil.nome}}</div>
 </h3>
-
+  <div ng-if="msg.codigo==0" class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Successo!</strong> {{msg.mensagem}}
+  </div>
+  <div ng-if="msg.codigo==1" class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Erro!</strong> {{msg.mensagem}}
+  </div>
 <button ng-if="!isEditando" class="btn" ng-click="habilitarEdicao()">Editar perfil</button>
 <button ng-if="!isEditando" class="btn" data-toggle="modal" data-target="#modalAlteraSenha">Alterar senha</button>
 <button ng-if="isEditando" class="btn btn-danger" ng-click="descartarEdicao()">Descartar alterações</button>
@@ -48,8 +55,8 @@
         <div class="modal-body">
 			<p><b>Senha anterior:</b> <input class="form-control" type="password" placeholder="Digite a sua senha anterior" ng-model="senhaAnterior"/></p>
 			<p><b>Nova senha:</b> <input class="form-control" type="password" placeholder="Digite a sua nova senha" ng-model="novaSenha1"/></p>
-			<p><b>Nova senha:</b> <input class="form-control" type="password" placeholder="Confirme a sua senha" ng-model="novaSenha2"/></p>
-			<button class="btn btn-success" data-dismiss="modal">Salvar perfil</button>
+			<p><b>Confirma nova senha:</b> <input class="form-control" type="password" placeholder="Confirme a sua senha" ng-model="novaSenha2"/></p>
+			<button class="btn btn-success" ng-click="trocarSenha();" data-dismiss="modal">Salvar senha</button>
 			<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		</div>
 

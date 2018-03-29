@@ -21,6 +21,31 @@ color:white;
 }
 
 a {
-    color:white;
+    color:#ff9933;
     text-decoration: none;
+}
+
+/*login e cadastro*/
+div.well{
+  height: 250px;
+} 
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.Absolute-Center.is-Responsive {
+  width: 50%; 
+  height: 50%;
+  min-width: 200px;
+  max-width: 400px;
+  padding: 40px;
+}
+
+.logo{
+  margin: auto;
+  margin: 10px,10px,10px,10px;
+  text-align: center;
 }

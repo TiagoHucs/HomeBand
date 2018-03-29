@@ -5,46 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 <link rel="stylesheet" href="css/style.css"></link>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="vendor/jquery.min.js"></script>
+<script	src="vendor/bootstrap.min.js"></script>
+<script	src="vendor/angular.min.js"></script>
+<script	src="vendor/angular-route.js"></script>
 <script src="js/CadastroCtrl.js"></script>
 <title>Home Band - Login</title>
 </head>
-<body class="formlog">
-	<div class="container" ng-app="cadastroApp"	ng-controller="cadastroCtrl">
-		<div align="center" style="margin: 60px">
-			<img src="img/logotipo.png" style="width: 200px;" />
-		</div>
-		<h3 align="center">Login</h3>
-		<p align="center" style="color:red;" th:text="${session.mensagemLogin}"></p>
-
-		<form class="form-horizontal" action="efetuaLogin" method="post" name="loginForm">
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="email">Email:</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="email"
-						placeholder="Entre com o e-mail para logar" name="email" ng-model="email" ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Password:</label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control" id="pwd"
-						placeholder="Entre com a senha" name="senha" ng-model="senha" ng-required="true" ng-minlength="6"/>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid">Entrar</button>
-				</div>
-			</div>
-		</form>
+<body>
+<div class="container" ng-app="cadastroApp"	ng-controller="cadastroCtrl">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+	<div class="logo">
+		<img src="img/logo.PNG" id="logo"></img>
 	</div>
-	<h3 align="center">
-		<a href="cadastro">cadastre-se</a>
-	</h3>
-
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <form action="efetuaLogin" id="loginForm" name="loginForm">
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input class="form-control" type="text" name='email' placeholder="email" ng-model="email" ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"/>          
+          </div>
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input class="form-control" type="password" name='senha' placeholder="senha" ng-model="senha" ng-required="true" ng-minlength="6"/>     
+          </div>
+          <div class="form-group">
+            <button ng-disabled="loginForm.$invalid" type="submit" class="btn btn-def btn-block">Login</button>
+          </div>
+          <div class="form-group text-center">
+            <a href="cadastro">Cadastre-se</a>
+          </div>
+        </form>        
+      </div>  
+    </div>    
+  </div>
+</div>
 </body>
 </html>

@@ -46,38 +46,4 @@ public class SecurityController {
 		return "redirect:login";
 	}
 	
-	@RequestMapping("cadastrar")
-	public String cadastrar(CadastroVO cadastroForm, HttpSession session) {
-		if (!cadastroForm.getSenha1().equals(cadastroForm.getSenha2()) ) {
-			session.setAttribute("mensagem", "As senhas não são iguais");
-			return "cadastro";
-		} else if (cadastroForm.getSenha1().length() < 6) {
-			session.setAttribute("mensagem", "A senha deve conter pelo menos 6 caracteres");
-			return "cadastro";
-		} else if (userService.usuarioJaEsxiste(cadastroForm.getEmail())) {
-			session.setAttribute("mensagem", "E-mail já cadastrado");
-			return "cadastro";
-		} else {
-			Usuario novoUsuario = new Usuario();
-			Perfil novoPerfil = new Perfil();
-			novoPerfil.setNome(cadastroForm.getNome());
-			novoPerfil.setLocalidade(cadastroForm.getLocalidade());
-			novoPerfil.setFoto("img/img_avatar1.png");
-			novoPerfil.setInstrumento(cadastroForm.getInstrumento());
-			perfilService.salvar(novoPerfil);
-			
-			novoUsuario.setEmail(cadastroForm.getEmail());
-			novoUsuario.setSenha(cadastroForm.getSenha1());
-			novoUsuario.setPerfil(novoPerfil);
-			userService.salvar(novoUsuario);
-
-			eventoService.SalvarEvento(novoPerfil, novoPerfil.getNome()+" se cadastrou no Home Band");
-			
-			session.setAttribute("mensagem", "Usuario cadastrado com sucesso");
-			return "cadastro";
-		}
-
-	}
-
-
 }

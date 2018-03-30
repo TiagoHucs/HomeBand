@@ -18,7 +18,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
             		uri.endsWith("cadastrar") ||
             		uri.endsWith("cadastro") || 
             		uri.endsWith("msg") || 
-            			uri.contains("js")){
+            		uri.contains("js")){
                 return true;
             }
 

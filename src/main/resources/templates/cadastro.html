@@ -18,14 +18,19 @@ app.controller('cadastroCtrl', function($scope,$http) {
 	$scope.cadastroForm = {}
 	
 	$scope.cadastrar = function(){
+	
 		$http({
 			method : "POST",
 			url : '/cadastrar',
 			data : $scope.cadastroForm
 		}).then(function mySuccess(response) {
 			$scope.msg = response.data
+			$scope.cadastroForm = {}
+			$scope.cadForm.$setPristine();
 		}, function myError(response) {
 			$scope.msg = response.data
+			$scope.cadastroForm = {}
+			$scope.cadForm.$setPristine();
 		});
 	}
 	
@@ -39,6 +44,15 @@ app.controller('cadastroCtrl', function($scope,$http) {
 			<div class="Absolute-Center is-Responsive">
 				<div class="logo">
 					<img src="img/logo.PNG" id="logo">
+				</div>
+				
+				<div ng-if="msg.codigo==1 && !cadForm.$dirty" class="alert alert-danger alert-dismissible" align="center">
+-					<span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+-					{{msg.mensagem}}
+-				</div>
+-				<div ng-if="msg.codigo==0 && !cadForm.$dirty" class="alert alert-danger alert-dismissible" align="center">
+-					<span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+-					{{msg.mensagem}}
 				</div>
 				
 				<div ng-if="cadForm.$error && cadForm.$dirty">
